@@ -3,9 +3,15 @@ package com.example.ibm_project_fin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_mapfor_search.*
 
 class mapforSearchActivity : AppCompatActivity() {
+    lateinit var googleMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mapfor_search)
@@ -21,8 +27,9 @@ class mapforSearchActivity : AppCompatActivity() {
         //하단에 데이터 표시하기
         set_map_underlist(listdata[0])
 
+        initmap(listdata[0])
         //지도 위에 마커 표시하기
-        set_mark_on_map(data)
+        //set_mark_on_map(data)
 
         //뒤로 가기 버튼 클릭시
         map_search_back.setOnClickListener {
@@ -72,6 +79,24 @@ class mapforSearchActivity : AppCompatActivity() {
             }
         }
         
+    }
+    private fun initmap(storeData: StoreData) {
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapSearched) as SupportMapFragment
+        mapFragment.getMapAsync{
+            googleMap = it
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(storeData.latlng,18.0f))
+            googleMap.setMinZoomPreference(15.0f)
+            googleMap.setMaxZoomPreference(20.0f)
+            val options = MarkerOptions()
+            options.position(storeData.latlng)
+            options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+            options.title(storeData.name)
+            // options.title(storeData.address)
+            val mk1 = googleMap.addMarker(options)
+            mk1.showInfoWindow()
+
+        }
     }
 
 }

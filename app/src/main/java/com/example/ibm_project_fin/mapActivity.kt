@@ -30,7 +30,7 @@ class mapActivity : AppCompatActivity() {
         var intent=intent
         visitedStoreList=intent.extras?.getSerializable("full") as ArrayList<StoreData>
         output=intent.extras?.getSerializable("one") as ArrayList<StoreData>
-        //init()
+        init()
 
         //아래 항목에 StoreData추가하기
         map_name.text=output[0].name

@@ -42,13 +42,13 @@
         android:id="@+id/mapSearched"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="434dp" />
+        android:layout_height="395dp" />
 
     <LinearLayout
-        android:paddingTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,11 +56,11 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:paddingRight="10dp"
                 android:id="@+id/map_search_image"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
+                android:paddingRight="10dp"
                 android:scaleType="fitXY" />
 
             <LinearLayout
@@ -116,34 +116,34 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:layout_marginRight="5dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:gravity="center"
                         android:id="@+id/map_search_distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:background="#F2F2F2"
                         android:backgroundTint="#F2F2F2"
                         android:fontFamily="@font/nanumsquareeb"
+                        android:gravity="center"
                         android:paddingLeft="3dp"
+                        android:paddingTop="5dp"
                         android:paddingRight="3dp"
+                        android:paddingBottom="5dp"
                         android:text="TextView"
                         android:textColor="#828282" />
 
                     <TextView
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:gravity="center"
                         android:id="@+id/map_search_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="3dp"
-                        android:paddingRight="3dp"
                         android:layout_weight="1"
                         android:background="#F2F2F2"
                         android:fontFamily="@font/nanumsquareeb"
+                        android:gravity="center"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="3dp"
+                        android:paddingBottom="5dp"
                         android:text="TextView"
                         android:textColor="#828282" />
                 </LinearLayout>
@@ -163,14 +163,14 @@
                     app:srcCompat="@drawable/round_20dp_ffffff" />
 
                 <TextView
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:id="@+id/map_search_congestionrate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#F2F2F2"
                     android:fontFamily="@font/nanumsquareeb"
                     android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:text="TextView"
                     android:textColor="#828282" />
             </LinearLayout>
