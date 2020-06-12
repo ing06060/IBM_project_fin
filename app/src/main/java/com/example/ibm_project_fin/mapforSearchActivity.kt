@@ -34,7 +34,7 @@ class mapforSearchActivity : AppCompatActivity() {
             //recomandstorelist로 이동
             val i = Intent(this,RecommendedStoreListActivity::class.java)
             i.putExtra("SearchedDataArr",data)
-            i.putExtra("SearchedData",listdata[0])
+            i.putExtra("SearchedData",listdata)
             startActivity(i)
         }
     }

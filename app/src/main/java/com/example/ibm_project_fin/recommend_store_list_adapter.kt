@@ -14,7 +14,7 @@ class recommend_store_list_adapter(val items:ArrayList<StoreData>): RecyclerView
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var touch=itemView.findViewById<LinearLayout>(R.id.search_list_touch)
-        var image=itemView.findViewById<TextView>(R.id.search_list_image)
+        //var image=itemView.findViewById<TextView>(R.id.search_list_image)
         var name=itemView.findViewById<TextView>(R.id.search_list_name)
         var address=itemView.findViewById<TextView>(R.id.search_list_address)
         var tel=itemView.findViewById<TextView>(R.id.search_list_tel)
