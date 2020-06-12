@@ -19,7 +19,7 @@ class visitedStoreListActivity : AppCompatActivity() {
         //메인액티비티에서 데이터 받아오기
 
         var intent=getIntent()
-        var visitedStoreData=intent.extras?.getSerializable("data") as ArrayList<StoreData>
+        val visitedStoreData=intent.extras?.getSerializable("data") as ArrayList<StoreData>
         //data=sort_data(data)
 
 
