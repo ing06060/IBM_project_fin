@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mapforSearchActivity"></activity>
+        <activity android:name=".RecommendedStoreListActivity"></activity>
+        <activity android:name=".mapforSearchActivity" />
         <activity android:name=".searchActivity" />
         <activity android:name=".searchStoreList" />
         <activity android:name=".visitedStoreListActivity" />

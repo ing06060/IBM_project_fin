@@ -1,5 +1,6 @@
 package com.example.ibm_project_fin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_mapfor_search.*
@@ -31,6 +32,10 @@ class mapforSearchActivity : AppCompatActivity() {
         }
         map_search_button.setOnClickListener {
             //recomandstorelist로 이동
+            val i = Intent(this,RecommendedStoreListActivity::class.java)
+            i.putExtra("SearchedDataArr",data)
+            i.putExtra("SearchedData",listdata[0])
+            startActivity(i)
         }
     }
 
