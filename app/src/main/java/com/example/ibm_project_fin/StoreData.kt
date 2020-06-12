@@ -1,6 +1,5 @@
 package com.example.ibm_project_fin
 
-import android.util.Log
 import com.google.android.gms.maps.model.LatLng
 import java.io.Serializable
 import java.text.SimpleDateFormat
@@ -18,6 +17,7 @@ data class StoreData(
     var visited_days_ago:Long=0, //확진자가 방문하고 지난 날짜
     var conjuction:Double=0.0 //현재 매장의 혼잡도
 ) :Serializable {
+
     init {
         //확진자가 방문하고 지난 날짜 계산하기
         var today=Date()
@@ -28,4 +28,5 @@ data class StoreData(
         var diff=to.time-visited.time
         visited_days_ago=diff/(60*60*24*1000)
     }
+
 }
