@@ -16,7 +16,7 @@ class mapActivity : AppCompatActivity() {
     lateinit var googleMap: GoogleMap
     var loc: LatLng = LatLng(37.554752,126.970631)
     lateinit var visitedStoreList:ArrayList<StoreData>
-    lateinit var output:StoreData
+    lateinit var output:ArrayList<StoreData>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +24,9 @@ class mapActivity : AppCompatActivity() {
 
         //데이터 전송받기
         var intent=intent
-        visitedStoreList=intent.extras?.getSerializable("fulldata") as ArrayList<StoreData>
-        output=intent.extras?.getSerializable("onedata") as StoreData
-        Toast.makeText(this,output.address,Toast.LENGTH_SHORT).show()
+        visitedStoreList=intent.extras?.getSerializable("full") as ArrayList<StoreData>
+        output=intent.extras?.getSerializable("one") as ArrayList<StoreData>
+        Toast.makeText(this,output[0].address,Toast.LENGTH_SHORT).show()
         //init()
     }
 
@@ -35,14 +35,14 @@ class mapActivity : AppCompatActivity() {
         val mapFragment = supportFragmentManager.findFragmentById(R.id.mapVisited) as SupportMapFragment
         mapFragment.getMapAsync{
             googleMap = it
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(output.latlng,16.0f))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(output[0].latlng,16.0f))
             googleMap.setMinZoomPreference(10.0f)
             googleMap.setMaxZoomPreference(18.0f)
             val options = MarkerOptions()
-            options.position(output.latlng)
+            options.position(output[0].latlng)
             options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-            options.title(output.name)
-            options.title(output.address)
+            options.title(output[0].name)
+            options.title(output[0].address)
             val mk1 = googleMap.addMarker(options)
 
         }

@@ -10,18 +10,16 @@ class mapforSearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mapfor_search)
         //타이틀 값 변경하기
         var inten=intent
-        val title=intent.getStringExtra("title")
-        map_search_title.setText(title)
 
         //전체 데이터 받기
-        var data=intent.extras?.getSerializable("fulldata") as ArrayList<StoreData>
-        var listdata=intent.extras?.getSerializable("onedata") as StoreData
+        var data=intent.extras?.getSerializable("full") as ArrayList<StoreData>
+        var listdata=intent.extras?.getSerializable("one") as ArrayList<StoreData>
 
         //하단에 데이터 표시하기
-        set_map_underlist(listdata)
+        set_map_underlist(listdata[0])
 
         //지도 위에 마커 표시하기
-        set_mark_on_map(title,data)
+        set_mark_on_map(data)
 
         //뒤로 가기 버튼 클릭시
         map_search_back.setOnClickListener {
@@ -36,7 +34,7 @@ class mapforSearchActivity : AppCompatActivity() {
         }
     }
 
-    fun set_mark_on_map(title:String, data:ArrayList<StoreData>){
+    fun set_mark_on_map( data:ArrayList<StoreData>){
 
     }
 

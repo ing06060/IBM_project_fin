@@ -35,9 +35,11 @@ class visitedStoreListActivity : AppCompatActivity() {
             ) {
                 //모든 데이터 전송 fulldata
                 //클릭한 데이터 전송 onedata
+                var dat=ArrayList<StoreData>()
+                dat.add(data)
                 val mapIntent= Intent(applicationContext,mapActivity::class.java)
-                mapIntent.putExtra("fulldata", visitedStoreData)
-                mapIntent.putExtra("onedata",data)
+                mapIntent.putExtra("full", visitedStoreData)
+                mapIntent.putExtra("one",dat)
                 startActivity(mapIntent)
             }
 
@@ -54,9 +56,11 @@ class visitedStoreListActivity : AppCompatActivity() {
         visited_store_list_map.setOnClickListener {
             //모든 데이터 전송 fulldata
             //가장 상위의 데이터 전송 onedata
+            var dat=ArrayList<StoreData>()
+            dat.add(visitedStoreData[0])
             val mapIntent= Intent(applicationContext,mapActivity::class.java)
-            mapIntent.putExtra("fulldata",visitedStoreData)
-            mapIntent.putExtra("onedata", visitedStoreData[0])
+            mapIntent.putExtra("full",visitedStoreData)
+            mapIntent.putExtra("one", dat)
             startActivity(mapIntent)
         }
 

@@ -32,8 +32,8 @@ class searchStoreList : AppCompatActivity() {
                 //현재 어댑터의 데이터의 값 전달해주기
                 val map_search_Intent= Intent(applicationContext,mapforSearchActivity::class.java)
                 map_search_Intent.putExtra("title",title.toString()) //타이틀 전송
-                map_search_Intent.putExtra("fulldata",data) //검색 결과 전체 데이터 전송
-                map_search_Intent.putExtra("onedata",data) //클릭한 데이터를 전송
+                map_search_Intent.putExtra("full",data) //검색 결과 전체 데이터 전송
+                map_search_Intent.putExtra("one",data) //클릭한 데이터를 전송
                 startActivity(map_search_Intent)
             }
 
@@ -49,10 +49,12 @@ class searchStoreList : AppCompatActivity() {
         search_store_map.setOnClickListener {
             //mapforsearchactivity로 이동
             //data[0]의 값 전달해주기
+            var dat=ArrayList<StoreData>()
+            dat.add(data[0])
             val map_search_Intent= Intent(applicationContext,mapforSearchActivity::class.java)
             map_search_Intent.putExtra("title",title.toString()) //타이틀 전송
-            map_search_Intent.putExtra("fulldata",data) //검색 결과 전체 데이터 전송
-            map_search_Intent.putExtra("onedata",data[0]) //검색 결과 중 상위 데이터 전송
+            map_search_Intent.putExtra("full",data) //검색 결과 전체 데이터 전송
+            map_search_Intent.putExtra("one",dat) //검색 결과 중 상위 데이터 전송
             startActivity(map_search_Intent)
         }
     }

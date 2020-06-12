@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         //Intro 화면 2초가 보여주기
         show_intro()
 
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
         main_visited_store.adapter = adapter
 
-        /*
+
         //가게 이름을 입력하세요 부분 클릭하면 searchStoreList로 이동한다.
         search_store_part.setOnClickListener {
             val searchIntent=Intent(applicationContext,searchActivity::class.java)
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-*/
+
 
 
     }
