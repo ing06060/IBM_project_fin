@@ -72,19 +72,7 @@ class MainActivity : AppCompatActivity() {
         more.setOnClickListener {
             val visitedIntent=Intent(applicationContext,visitedStoreListActivity::class.java)
             //visitedIntent.putExtra("data",storeVisitedList)
-            var d=StoreData("온누리대산약국",
-                "서울특별시 관악구 시흥대로 566",
-                "02-853-4967",LatLng(37.29003,126.54085),
-                2.2,
-                0,
-                6,
-                3,
-                0,
-                0.0
-            )
-            //visitedIntent.putExtra("data",storeVisitedList)
             startActivity(visitedIntent)
-            //visitedIntent.putExtra("dataOfStore",storeVisitedList)*/
         }
 
         //위치 > 이 파트 누르면 위치 재설정하기

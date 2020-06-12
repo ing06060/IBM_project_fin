@@ -13,5 +13,7 @@ class mapActivity : AppCompatActivity() {
         var visitedStoreList=intent.extras?.getSerializable("data") as ArrayList<StoreData>
         var output=intent.extras?.getSerializable("store") as StoreData
 
+
+
     }
 }
