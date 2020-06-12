@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     lateinit var nowLoc:String //현재 텍스트 위치
     var currentLoc=LatLng(0.0,0.0) //현재 위치의 위도와 경도
-    public lateinit var storeVisitedList:ArrayList<StoreData> // 확진자 방문 가게 명단
+    lateinit var storeVisitedList:ArrayList<StoreData> // 확진자 방문 가게 명단
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         //더보기 버튼 클릭시 visitedStoreListActivity로 이동한다.
         more.setOnClickListener {
             val visitedIntent=Intent(applicationContext,visitedStoreListActivity::class.java)
-            //visitedIntent.putExtra("data",storeVisitedList)
+            visitedIntent.putExtra("data",storeVisitedList)
             startActivity(visitedIntent)
         }
 
@@ -114,11 +114,11 @@ class MainActivity : AppCompatActivity() {
 
     fun make_visited_store_list(latlng:LatLng):ArrayList<StoreData>{
         //확진자 명단 데이터 만들기
-        var storeVisitedList=ArrayList<StoreData>()
-        if(storeVisitedList.size>0){
-            storeVisitedList.clear()
+        var data=ArrayList<StoreData>()
+        if(data.size>0){
+            data.clear()
         }
-        storeVisitedList.add(StoreData("온누리대산약국",
+        data.add(StoreData("온누리대산약국",
             "서울특별시 관악구 시흥대로 566",
             "02-853-4967",LatLng(37.29003,126.54085),
             2.2,
@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
             0,
             0.0
         ))
-        storeVisitedList.add(StoreData("CU 구로공단점",
+        data.add(StoreData("CU 구로공단점",
             "서울특별시 관악구 신림동 시흥대로 556",
             "+02-859-6698",
             LatLng(37.482733, 126.901657),
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             0,
             1.5
         ))
-        storeVisitedList.add(StoreData("예수비전교회",
+        data.add(StoreData("예수비전교회",
             "서울특별시 금천구 독산동 199-12",
             "02-853-4967",LatLng(37.470876, 126.901740),
             1.2,
@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity() {
             0,
             0.0
         ))
-        storeVisitedList.add(StoreData("금천체육공원",
+        data.add(StoreData("금천체육공원",
             "서울특별시 금천구 독산동",
             "02-853-4967",LatLng(37.468407, 126.908508),
             2.2,
@@ -159,7 +159,22 @@ class MainActivity : AppCompatActivity() {
             0,
             2.2
         ))
-        return storeVisitedList
+
+        for(i in 0 until data.size){
+            data[i].visited_days_ago=get_visited_days_ago(data[i].visited_month,data[i].visited_day)
+        }
+
+        return data
+    }
+
+    fun get_visited_days_ago(visited_month:Int, visited_day:Int):Int{
+        var today=Date()
+        var dateFormat=SimpleDateFormat("MM-dd")
+        var toDay=dateFormat.format(today)
+        var to=dateFormat.parse(toDay.toString())
+        var visited=dateFormat.parse(visited_month.toString()+"-"+visited_day.toString()+" 00:00")
+        var diff=to.time-visited.time
+        return (diff/(60*60*24*1000)).toInt()
     }
 
     fun get_recent_search():ArrayList<String>{

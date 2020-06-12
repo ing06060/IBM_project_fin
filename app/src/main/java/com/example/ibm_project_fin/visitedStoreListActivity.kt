@@ -18,10 +18,10 @@ class visitedStoreListActivity : AppCompatActivity() {
         //Toast.makeText(applicationContext,"VisitedStoreList 실행",Toast.LENGTH_LONG).show()
         //메인액티비티에서 데이터 받아오기
 
-       // var intent=getIntent()
-        //var data=intent.extras?.getSerializable("data") as ArrayList<StoreData>
+        var intent=getIntent()
+        var data=intent.extras?.getSerializable("data") as ArrayList<StoreData>
 
-/*
+
         //recyclerview에 어댑터 달기
         visited_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
         var adapter=visited_store_list_adapter(data)
@@ -43,7 +43,7 @@ class visitedStoreListActivity : AppCompatActivity() {
         }
         visited_store_list_recyclerView.adapter=adapter
 
-*/
+
         //뒤로가기 버튼을 클릭한 경우
         visited_store_list_back.setOnClickListener {
             finish()
