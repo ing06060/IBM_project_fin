@@ -16,8 +16,8 @@
             android:id="@+id/search_store_back"
             android:layout_width="46dp"
             android:layout_height="match_parent"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             app:srcCompat="@drawable/back" />
         <TextView
             android:id="@+id/search_store_title"

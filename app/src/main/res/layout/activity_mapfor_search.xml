@@ -12,6 +12,8 @@
         android:layout_height="80dp"
         android:orientation="horizontal">
         <ImageView
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:id="@+id/map_search_back"
             android:layout_width="46dp"
             android:layout_height="match_parent"
