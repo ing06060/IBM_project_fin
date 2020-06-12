@@ -36,7 +36,7 @@ class main_visited_adapter(var item:ArrayList<StoreData>):RecyclerView.Adapter<m
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return item.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

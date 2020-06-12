@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     lateinit var nowLoc:String //현재 텍스트 위치
     var currentLoc=LatLng(0.0,0.0) //현재 위치의 위도와 경도
-    lateinit var storeVisitedList:ArrayList<StoreData> // 확진자 방문 가게 명단
+    public lateinit var storeVisitedList:ArrayList<StoreData> // 확진자 방문 가게 명단
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         set_location()
 
         //위치 기반으로 확진자가 방문한 가게 명단 가져오기
-        storeVisitedList=make_visited_store_list(currentLoc)
+        var storeVisitedList=make_visited_store_list(currentLoc)
         Log.i("data size","storevisitedlist data size ask")
         if(storeVisitedList.size==0){
             Log.i("data size","storevisitedlist data size not 0")
@@ -67,13 +67,24 @@ class MainActivity : AppCompatActivity() {
             searchIntent.putExtra("data",search)
             startActivity(searchIntent)
         }
-        
+
         //더보기 버튼 클릭시 visitedStoreListActivity로 이동한다.
         more.setOnClickListener {
             val visitedIntent=Intent(applicationContext,visitedStoreListActivity::class.java)
-            visitedIntent.putExtra("data",storeVisitedList)
+            //visitedIntent.putExtra("data",storeVisitedList)
+            var d=StoreData("온누리대산약국",
+                "서울특별시 관악구 시흥대로 566",
+                "02-853-4967",LatLng(37.29003,126.54085),
+                2.2,
+                0,
+                6,
+                3,
+                0,
+                0.0
+            )
+            //visitedIntent.putExtra("data",storeVisitedList)
             startActivity(visitedIntent)
-            //visitedIntent.putExtra("dataOfStore",storeVisitedList)
+            //visitedIntent.putExtra("dataOfStore",storeVisitedList)*/
         }
 
         //위치 > 이 파트 누르면 위치 재설정하기
@@ -115,6 +126,7 @@ class MainActivity : AppCompatActivity() {
 
     fun make_visited_store_list(latlng:LatLng):ArrayList<StoreData>{
         //확진자 명단 데이터 만들기
+        var storeVisitedList=ArrayList<StoreData>()
         if(storeVisitedList.size>0){
             storeVisitedList.clear()
         }
