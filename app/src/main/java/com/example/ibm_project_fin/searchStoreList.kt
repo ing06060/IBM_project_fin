@@ -19,7 +19,7 @@ class searchStoreList : AppCompatActivity() {
         search_store_title.setText(title)
 
         //어댑터에 검색가게 정보 넣기
-        search_store_list.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+        search_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
         var adapter=search_store_list_adapter(data)
         adapter.onitemtouchlistener=object:search_store_list_adapter.OnItemtouch{
             override fun itemtouch(
@@ -38,6 +38,7 @@ class searchStoreList : AppCompatActivity() {
             }
 
         }
+        search_store_list_recyclerView.adapter=adapter
 
 
         //뒤로 가기 버튼 클릭하면 액티비티 종료시키기
