@@ -49,7 +49,6 @@ class searchActivity : AppCompatActivity() {
                     //해당 검색어 삭제하기
                     adapter.deleteData(position)
                     //데이터베이스나 서버에도 적용하는 코드
-
                 }
 
             }

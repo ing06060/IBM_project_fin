@@ -46,8 +46,15 @@ class RecommendedStoreListActivity : AppCompatActivity() {
             finish()
         }
 
+        //모든 마커 띄우기
         recommend_map.setOnClickListener {
-
+            var data=ArrayList<StoreData>()
+            data.add(storedat[0])
+            val map_search_Intent= Intent(applicationContext,mapforSearchActivity::class.java)
+            map_search_Intent.putExtra("title","검색모든매장표시") //타이틀 전송
+            map_search_Intent.putExtra("full",listdata) //검색 결과 전체 데이터 전송
+            map_search_Intent.putExtra("one",data) //검색 결과 중 상위 데이터 전송
+            startActivity(map_search_Intent)
         }
 
         //리스트에 띄우기

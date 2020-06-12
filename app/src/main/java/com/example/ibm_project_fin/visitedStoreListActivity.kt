@@ -59,6 +59,7 @@ class visitedStoreListActivity : AppCompatActivity() {
             var dat=ArrayList<StoreData>()
             dat.add(visitedStoreData[0])
             val mapIntent= Intent(applicationContext,mapActivity::class.java)
+            mapIntent.putExtra("title","확진자이용매장모두표시")
             mapIntent.putExtra("full",visitedStoreData)
             mapIntent.putExtra("one", dat)
             startActivity(mapIntent)
