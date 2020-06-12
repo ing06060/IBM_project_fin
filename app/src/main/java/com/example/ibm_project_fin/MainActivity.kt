@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     fun make_visited_store_list(latlng:LatLng):ArrayList<StoreData>{
         //확진자 명단 데이터 만들기
-        var data=ArrayList<StoreData>()
+        var data= ArrayList<StoreData>()
         if(data.size>0){
             data.clear()
         }
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         ))
         data.add(StoreData("CU 구로공단점",
             "서울특별시 관악구 신림동 시흥대로 556",
-            "+02-859-6698",
+            "02-859-6698",
             LatLng(37.482733, 126.901657),
             2.08,
             1,
@@ -164,6 +164,7 @@ class MainActivity : AppCompatActivity() {
             data[i].visited_days_ago=get_visited_days_ago(data[i].visited_month,data[i].visited_day)
         }
 
+        data.sortBy { it.distance }
         return data
     }
 
