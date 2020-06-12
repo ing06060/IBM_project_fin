@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.recent_search_layout.*
 
