@@ -18,6 +18,7 @@ class searchStoreList : AppCompatActivity() {
         var data=intent.extras?.getSerializable("data") as ArrayList<StoreData>
         search_store_title.setText(title)
 
+
         //어댑터에 검색가게 정보 넣기
         search_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
         var adapter=search_store_list_adapter(data)
