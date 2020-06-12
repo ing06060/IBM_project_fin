@@ -149,7 +149,7 @@
                 android:textColor="#0F5CDF" />
 
             <ImageView
-                android:id="@+id/map_dcongestionImage"
+                android:id="@+id/map_congestionImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/round_20dp_ffffff" />

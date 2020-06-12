@@ -9,6 +9,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_map.*
+
 //확진자 이용매장 or 추천매장
 
 class mapActivity : AppCompatActivity() {
@@ -28,6 +30,18 @@ class mapActivity : AppCompatActivity() {
         output=intent.extras?.getSerializable("one") as ArrayList<StoreData>
         Toast.makeText(this,output[0].address,Toast.LENGTH_SHORT).show()
         //init()
+
+        //아래 항목에 StoreData추가하기
+        map_name.text=output[0].name
+        map_address.text=output[0].address
+        map_tel.text=output[0].phone
+        map_distance.text=output[0].distance.toString()+"m"
+        map_daysago.text=output[0].visited_days_ago.toString()+"일 전"
+        if(output[0].conjuction>=1.5){
+            map_congestionImage.setImageResource(R.drawable.congestionlowinmap)
+        }else{
+            map_congestionImage.setImageResource(R.drawable.congestionhighinmap)
+        }
     }
 
     private fun init() {
