@@ -1,5 +1,6 @@
 package com.example.ibm_project_fin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -42,6 +43,28 @@ class mapActivity : AppCompatActivity() {
         }else{
             map_congestionImage.setImageResource(R.drawable.congestionhighinmap)
         }
+
+        when(output[0].state){
+            1->{
+                map_state.text="영업 중"
+            }
+            0->{
+                map_state.text="영업 종료"
+            }
+            -1->{
+                map_state.text="휴업중"
+            }
+        }
+
+        map_back.setOnClickListener {
+            finish()
+        }
+        map_list.setOnClickListener {
+            val list_intent= Intent(applicationContext,visitedStoreListActivity::class.java)
+            list_intent.putExtra("data",visitedStoreList)
+            startActivity(list_intent)
+        }
+
     }
 
     private fun init() {

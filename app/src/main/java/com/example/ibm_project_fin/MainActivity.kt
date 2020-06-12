@@ -53,9 +53,11 @@ class MainActivity : AppCompatActivity() {
                 position: Int
             ) {
                 //mapActivity로 이동한다.
+                var dat=ArrayList<StoreData>()
+                dat.add(data)
                 val map_Intent = Intent(applicationContext, mapActivity::class.java)
-                map_Intent.putExtra("fulldata", data) //하단에 보여줄 데이터 전송
-                map_Intent.putExtra("onedata", storeVisitedList) //인텐트에 데이터 전송
+                map_Intent.putExtra("one", dat) //하단에 보여줄 데이터 전송
+                map_Intent.putExtra("full", storeVisitedList) //인텐트에 데이터 전송
                 startActivity(map_Intent)
             }
         }
