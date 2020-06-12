@@ -135,7 +135,8 @@ class MainActivity : AppCompatActivity() {
                     6,
                     3,
                     0,
-                    0.0
+                    0.0,
+                    R.drawable.pharmacy
                 )
             )
             data.add(
@@ -149,7 +150,8 @@ class MainActivity : AppCompatActivity() {
                     6,
                     3,
                     0,
-                    1.5
+                    1.5,
+                    R.drawable.mart
                 )
             )
             data.add(
@@ -163,7 +165,8 @@ class MainActivity : AppCompatActivity() {
                     6,
                     7,
                     0,
-                    0.0
+                    0.0,
+                    R.drawable.church
                 )
             )
             data.add(
@@ -176,7 +179,8 @@ class MainActivity : AppCompatActivity() {
                     6,
                     7,
                     0,
-                    2.2
+                    2.2,
+                    R.drawable.park
                 )
             )
 
@@ -202,7 +206,7 @@ class MainActivity : AppCompatActivity() {
         fun get_recent_search(): ArrayList<String> {
             var data = ArrayList<String>()
             data.add("코인노래방")
-            data.add("카페")
+            data.add("스타벅스 독산점")
             data.add("마라탕")
             data.add("음식점")
             data.add("음식")

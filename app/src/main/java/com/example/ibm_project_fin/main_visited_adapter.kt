@@ -3,6 +3,7 @@ package com.example.ibm_project_fin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ class main_visited_adapter(var item:ArrayList<StoreData>):RecyclerView.Adapter<m
         var touch=itemView.findViewById<LinearLayout>(R.id.main_visited_touch)
         var name=itemView.findViewById<TextView>(R.id.main_visited_name)
         var distance=itemView.findViewById<TextView>(R.id.main_visited_distance)
+        var image=itemView.findViewById<ImageView>(R.id.main_visited_image)
         var address=itemView.findViewById<TextView>(R.id.main_visited_address)
         var state=itemView.findViewById<TextView>(R.id.main_visited_state)
         var daysago=itemView.findViewById<TextView>(R.id.main_visited_daysago)
@@ -43,6 +45,7 @@ class main_visited_adapter(var item:ArrayList<StoreData>):RecyclerView.Adapter<m
         holder.name.text=item[position].name
         holder.distance.text=item[position].distance.toString()+"m"
         holder.address.text=item[position].address.toString()
+        holder.image.setImageResource(item[position].image)
         when(item[position].state){
             1->{
                 holder.state.text="영업 중"

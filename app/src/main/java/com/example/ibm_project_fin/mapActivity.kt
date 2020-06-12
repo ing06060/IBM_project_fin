@@ -31,14 +31,17 @@ class mapActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
         //데이터 전송받기
         var intent=intent
+        var title=intent.getStringExtra("title")
         visitedStoreList=intent.extras?.getSerializable("full") as ArrayList<StoreData>
         output=intent.extras?.getSerializable("one") as ArrayList<StoreData>
+        //init()
 
         init()
         //아래 항목에 StoreData추가하기
         map_name.text=output[0].name
         map_address.text=output[0].address
         map_tel.text=output[0].phone
+        map_image.setImageResource(output[0].image)
         map_distance.text=output[0].distance.toString()+"m"
 
         if(intent.getStringExtra("title")=="검색 결과"){
@@ -73,8 +76,6 @@ class mapActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
                 map_state.text="휴업중"
             }
         }
-
-
 
         map_back.setOnClickListener {
             finish()
@@ -167,5 +168,3 @@ class mapActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     }
     //추천매장
 }
-
-

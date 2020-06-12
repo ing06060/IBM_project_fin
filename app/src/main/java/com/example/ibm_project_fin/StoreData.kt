@@ -14,6 +14,7 @@ class StoreData(var name:String, //가게 이름
                 var visited_month:Int, //확진자 방문한 월
                 var visited_day:Int, //확진자 방문한 일
                 var visited_days_ago:Int, //확진자가 방문하고 지난 날짜
-                var conjuction:Double //현재 매장의 혼잡도
+                var conjuction:Double, //현재 매장의 혼잡도
+                var image:Int// resource id
 ):Parcelable {
 }

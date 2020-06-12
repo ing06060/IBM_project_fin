@@ -22,6 +22,7 @@ class RecommendedStoreListActivity : AppCompatActivity() {
         storename.text = storedata.name
         location.text = storedata.address
         tel.text = storedata.phone
+        recommend_image.setImageResource(storedata.image)
         distance.text = storedata.distance.toString()
         when(storedata.state){
             1->{

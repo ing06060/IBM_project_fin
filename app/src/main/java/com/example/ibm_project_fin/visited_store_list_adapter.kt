@@ -15,6 +15,7 @@ class visited_store_list_adapter(val items:ArrayList<StoreData>):RecyclerView.Ad
     inner class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         var touch=itemView.findViewById<LinearLayout>(R.id.visited_store_map_touch)
         var name=itemView.findViewById<TextView>(R.id.visit_store_map_name)
+        var image=itemView.findViewById<ImageView>(R.id.visit_store_map_image)
         var address=itemView.findViewById<TextView>(R.id.visit_store_map_address)
         var phone=itemView.findViewById<TextView>(R.id.visit_store_map_phone)
         var daysago=itemView.findViewById<TextView>(R.id.visit_store_map_dayago)
@@ -48,6 +49,7 @@ class visited_store_list_adapter(val items:ArrayList<StoreData>):RecyclerView.Ad
         holder.phone.text=items[position].phone
         holder.daysago.text=items[position].visited_days_ago.toString()+"일 전"
         holder.distance.text=items[position].distance.toString()+"m"
+        holder.image.setImageResource(items[position].image)
         when(items[position].state){
             1->{
                 holder.state.text="영업 중"

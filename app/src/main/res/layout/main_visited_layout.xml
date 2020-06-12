@@ -9,7 +9,7 @@
     android:background="@drawable/round_5dp_ffffff"
     android:id="@+id/main_visited_touch">
     <ImageView
-        android:id="@+id/storeimage"
+        android:id="@+id/main_visited_image"
         android:layout_weight="15"
         android:scaleType="fitXY"
         android:layout_width="match_parent"

@@ -71,6 +71,7 @@ class mapforSearchActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListene
         map_search_name.text=data.name
         map_search_address.text=data.address
         map_search_congestionrate.text=data.conjuction.toString()
+        map_search_image.setImageResource(data.image)
         if(data.conjuction>=1.5){
             map_search_congestionImage.setImageResource(R.drawable.congestionlowinmap)
         }else{

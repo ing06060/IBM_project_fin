@@ -54,7 +54,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/storeimage"
+            android:id="@+id/recommend_image"
             android:layout_width="381dp"
             android:layout_height="match_parent"
             android:layout_weight="15"

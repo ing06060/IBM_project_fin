@@ -19,32 +19,59 @@ class visitedStoreListActivity : AppCompatActivity() {
         //메인액티비티에서 데이터 받아오기
 
         var intent=getIntent()
+        var title=intent.getStringExtra("title")
         val visitedStoreData=intent.extras?.getSerializable("data") as ArrayList<StoreData>
         //data=sort_data(data)
 
+        if(title=="검색 결과"){
+            visited_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+            var adapter=search_store_list_adapter(visitedStoreData)
+            adapter.onitemtouchlistener=object:search_store_list_adapter.OnItemtouch{
+                override fun itemtouch(
+                    viewHolder: search_store_list_adapter.MyViewHolder,
+                    view: View,
+                    data: StoreData,
+                    position: Int
+                ) {
+                    var dat=ArrayList<StoreData>()
+                    dat.add(data)
+                    val mapIntent= Intent(applicationContext,mapActivity::class.java)
+                    mapIntent.putExtra("title","검색 결과")
+                    mapIntent.putExtra("full", visitedStoreData)
+                    mapIntent.putExtra("one",dat)
+                    startActivity(mapIntent)
+                }
 
-        //recyclerview에 어댑터 달기
-        visited_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-        var adapter=visited_store_list_adapter(visitedStoreData)
-        adapter.itemtouchlistener=object:visited_store_list_adapter.OnItemTouch{
-            override fun onitemtouch(
-                viewholder: visited_store_list_adapter.MyViewHolder,
-                view: View,
-                data: StoreData,
-                position: Int
-            ) {
-                //모든 데이터 전송 fulldata
-                //클릭한 데이터 전송 onedata
-                var dat=ArrayList<StoreData>()
-                dat.add(data)
-                val mapIntent= Intent(applicationContext,mapActivity::class.java)
-                mapIntent.putExtra("full", visitedStoreData)
-                mapIntent.putExtra("one",dat)
-                startActivity(mapIntent)
             }
+            visited_store_list_recyclerView.adapter=adapter
+        }else{
+            //recyclerview에 어댑터 달기
+            visited_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+            var adapter=visited_store_list_adapter(visitedStoreData)
+            adapter.itemtouchlistener=object:visited_store_list_adapter.OnItemTouch{
+                override fun onitemtouch(
+                    viewholder: visited_store_list_adapter.MyViewHolder,
+                    view: View,
+                    data: StoreData,
+                    position: Int
+                ) {
+                    //모든 데이터 전송 fulldata
+                    //클릭한 데이터 전송 onedata
+                    var dat=ArrayList<StoreData>()
+                    dat.add(data)
+                    val mapIntent= Intent(applicationContext,mapActivity::class.java)
+                    mapIntent.putExtra("title","확진자 방문매장")
+                    mapIntent.putExtra("full", visitedStoreData)
+                    mapIntent.putExtra("one",dat)
+                    startActivity(mapIntent)
+                }
 
+            }
+            visited_store_list_recyclerView.adapter=adapter
         }
-        visited_store_list_recyclerView.adapter=adapter
+
+
+
 
 
         //뒤로가기 버튼을 클릭한 경우

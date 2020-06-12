@@ -71,7 +71,7 @@
                         android:textSize="16dp"
                         android:textColor="#0077ff"
                         android:layout_alignParentBottom="true"
-                        android:text="위치 > 서울 광진구"
+                        android:text="위치 > 서울시 독산역"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 

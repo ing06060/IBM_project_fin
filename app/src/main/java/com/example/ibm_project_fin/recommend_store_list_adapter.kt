@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.search_store_list_layout.view.*
 
 class recommend_store_list_adapter(val items:ArrayList<StoreData>): RecyclerView.Adapter<recommend_store_list_adapter.MyViewHolder>() {
 
@@ -14,6 +15,7 @@ class recommend_store_list_adapter(val items:ArrayList<StoreData>): RecyclerView
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var touch=itemView.findViewById<LinearLayout>(R.id.search_list_touch)
+        var image=itemView.findViewById<ImageView>(R.id.search_list_image)
         var name=itemView.findViewById<TextView>(R.id.search_list_name)
         var address=itemView.findViewById<TextView>(R.id.search_list_address)
         var tel=itemView.findViewById<TextView>(R.id.search_list_tel)
@@ -46,6 +48,7 @@ class recommend_store_list_adapter(val items:ArrayList<StoreData>): RecyclerView
         holder.address.text=items[position].address.toString()
         holder.tel.text=items[position].phone
         holder.distance.text=items[position].distance.toString()+"m"
+        holder.image.setImageResource(items[position].image)
         when(items[position].state){
             1->{
                 holder.state.text="영업 중"
