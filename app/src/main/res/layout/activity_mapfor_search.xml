@@ -117,6 +117,7 @@
                     android:padding="5dp">
 
                     <TextView
+                        android:layout_marginRight="5dp"
                         android:paddingBottom="10dp"
                         android:gravity="center"
                         android:id="@+id/map_search_distance"

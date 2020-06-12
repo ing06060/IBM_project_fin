@@ -15,13 +15,13 @@ class searchStoreList : AppCompatActivity() {
         //title정보 검색어로 변경하기
         val intent=getIntent()
         val title=intent.getStringExtra("title")
-        var data=intent.extras?.getSerializable("data") as ArrayList<StoreData>
+        var visitedStoreList=intent.extras?.getSerializable("data") as ArrayList<StoreData>
         search_store_title.setText(title)
 
 
         //어댑터에 검색가게 정보 넣기
         search_store_list_recyclerView.layoutManager=LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
-        var adapter=search_store_list_adapter(data)
+        var adapter=search_store_list_adapter(visitedStoreList)
         adapter.onitemtouchlistener=object:search_store_list_adapter.OnItemtouch{
             override fun itemtouch(
                 viewHolder: search_store_list_adapter.MyViewHolder,
@@ -32,9 +32,11 @@ class searchStoreList : AppCompatActivity() {
                 //mapforsearchactivity로 이동
                 //현재 어댑터의 데이터의 값 전달해주기
                 val map_search_Intent= Intent(applicationContext,mapforSearchActivity::class.java)
+                var dat=ArrayList<StoreData>()
+                dat.add(data)
                 map_search_Intent.putExtra("title",title.toString()) //타이틀 전송
-                map_search_Intent.putExtra("full",data) //검색 결과 전체 데이터 전송
-                map_search_Intent.putExtra("one",data) //클릭한 데이터를 전송
+                map_search_Intent.putExtra("full",visitedStoreList) //검색 결과 전체 데이터 전송
+                map_search_Intent.putExtra("one",dat) //클릭한 데이터를 전송
                 startActivity(map_search_Intent)
             }
 
@@ -51,12 +53,12 @@ class searchStoreList : AppCompatActivity() {
         search_store_map.setOnClickListener {
             //mapforsearchactivity로 이동
             //data[0]의 값 전달해주기
-            var dat=ArrayList<StoreData>()
-            dat.add(data[0])
+            var data=ArrayList<StoreData>()
+            data.add(visitedStoreList[0])
             val map_search_Intent= Intent(applicationContext,mapforSearchActivity::class.java)
             map_search_Intent.putExtra("title",title.toString()) //타이틀 전송
-            map_search_Intent.putExtra("full",data) //검색 결과 전체 데이터 전송
-            map_search_Intent.putExtra("one",dat) //검색 결과 중 상위 데이터 전송
+            map_search_Intent.putExtra("full",visitedStoreList) //검색 결과 전체 데이터 전송
+            map_search_Intent.putExtra("one",data) //검색 결과 중 상위 데이터 전송
             startActivity(map_search_Intent)
         }
     }
