@@ -16,8 +16,8 @@ class RecommendedStoreListActivity : AppCompatActivity() {
 
     private fun init() {
         var listdata=intent.extras?.getSerializable("SearchedDataArr") as ArrayList<StoreData>
-        var storedata = intent.extras?.getSerializable("SearchedData") as StoreData
-
+        var storedat = intent.extras?.getSerializable("SearchedData") as ArrayList<StoreData>
+        var storedata=storedat[0]
         //현재검색결과 띄우기
         storename.text = storedata.name
         location.text = storedata.address
@@ -33,6 +33,20 @@ class RecommendedStoreListActivity : AppCompatActivity() {
             -1-> {
                 state.text="휴업"
             }
+
+        }
+        if(storedata.conjuction>=1.5){
+            recommend_congestionImage.setImageResource(R.drawable.congestionlow)
+        }else{
+            recommend_congestionImage.setImageResource(R.drawable.congestionhigh)
+        }
+
+        //뒤로가기 버튼 클릭한 경우
+        recommend_back.setOnClickListener {
+            finish()
+        }
+
+        recommend_map.setOnClickListener {
 
         }
 
@@ -53,14 +67,18 @@ class RecommendedStoreListActivity : AppCompatActivity() {
                 //mapactivity로 이동
                 //현재 어댑터의 데이터의 값 전달해주기
                 val map_Intent= Intent(applicationContext,mapActivity::class.java)
+                var dat=ArrayList<StoreData>()
+                dat.add(data)
+                map_Intent.putExtra("title","검색 결과")
                 map_Intent.putExtra("full",listdata) //검색 결과 전체 데이터 전송
-                map_Intent.putExtra("one",data) //클릭한 데이터를 전송
+                map_Intent.putExtra("one",dat) //클릭한 데이터를 전송
                 startActivity(map_Intent)
             }
 
 
 
         }
+        recommend_store_list.adapter=adapter
 
         /*button2.setOnClickListener {
             val i = Intent(this,MapActivity::class.java)

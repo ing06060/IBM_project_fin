@@ -3,6 +3,7 @@ package com.example.ibm_project_fin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -29,7 +30,6 @@ class mapActivity : AppCompatActivity() {
         var intent=intent
         visitedStoreList=intent.extras?.getSerializable("full") as ArrayList<StoreData>
         output=intent.extras?.getSerializable("one") as ArrayList<StoreData>
-        Toast.makeText(this,output[0].address,Toast.LENGTH_SHORT).show()
         //init()
 
         //아래 항목에 StoreData추가하기
@@ -37,7 +37,14 @@ class mapActivity : AppCompatActivity() {
         map_address.text=output[0].address
         map_tel.text=output[0].phone
         map_distance.text=output[0].distance.toString()+"m"
-        map_daysago.text=output[0].visited_days_ago.toString()+"일 전"
+        if(intent.getStringExtra("title")=="검색 결과"){
+            map_title.setText(output[0].name)
+            map_daysago.visibility= View.INVISIBLE
+        }else{
+            map_title.setText("확진자이용매장")
+            map_daysago.text=output[0].visited_days_ago.toString()+"일 전"
+        }
+
         if(output[0].conjuction>=1.5){
             map_congestionImage.setImageResource(R.drawable.congestionlowinmap)
         }else{

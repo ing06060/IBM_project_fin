@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 val map_Intent = Intent(applicationContext, mapActivity::class.java)
                 map_Intent.putExtra("one", dat) //하단에 보여줄 데이터 전송
                 map_Intent.putExtra("full", storeVisitedList) //인텐트에 데이터 전송
+                map_Intent.putExtra("title","확진자이용매장")
                 startActivity(map_Intent)
             }
         }

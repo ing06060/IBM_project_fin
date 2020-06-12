@@ -15,6 +15,8 @@ class mapforSearchActivity : AppCompatActivity() {
         //전체 데이터 받기
         var data=intent.extras?.getSerializable("full") as ArrayList<StoreData>
         var listdata=intent.extras?.getSerializable("one") as ArrayList<StoreData>
+        map_search_title.text=listdata[0].name
+
 
         //하단에 데이터 표시하기
         set_map_underlist(listdata[0])
@@ -29,12 +31,16 @@ class mapforSearchActivity : AppCompatActivity() {
         //리스트 버튼 클릭시
         map_search_list.setOnClickListener {
             //recomandStoreListActivity로 이동
+            finish()
         }
+        //추천매장 보기
         map_search_button.setOnClickListener {
             //recomandstorelist로 이동
             val i = Intent(this,RecommendedStoreListActivity::class.java)
+            var dat=ArrayList<StoreData>()
+            dat.add(listdata[0])
             i.putExtra("SearchedDataArr",data)
-            i.putExtra("SearchedData",listdata[0])
+            i.putExtra("SearchedData",dat)
             startActivity(i)
         }
     }

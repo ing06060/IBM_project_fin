@@ -45,15 +45,14 @@
         android:layout_height="434dp" />
 
     <LinearLayout
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
@@ -118,7 +117,8 @@
 
                     <TextView
                         android:layout_marginRight="5dp"
-                        android:paddingBottom="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:gravity="center"
                         android:id="@+id/map_search_distance"
                         android:layout_width="wrap_content"
@@ -128,16 +128,19 @@
                         android:backgroundTint="#F2F2F2"
                         android:fontFamily="@font/nanumsquareeb"
                         android:paddingLeft="3dp"
-                        android:paddingRight="10dp"
+                        android:paddingRight="3dp"
                         android:text="TextView"
                         android:textColor="#828282" />
 
                     <TextView
-                        android:paddingBottom="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:gravity="center"
                         android:id="@+id/map_search_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
                         android:layout_weight="1"
                         android:background="#F2F2F2"
                         android:fontFamily="@font/nanumsquareeb"
@@ -160,6 +163,8 @@
                     app:srcCompat="@drawable/round_20dp_ffffff" />
 
                 <TextView
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:id="@+id/map_search_congestionrate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
